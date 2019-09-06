@@ -37,14 +37,14 @@ public class TabListAdapter extends RecyclerView.Adapter<TabListAdapter.TabListI
     @Override
     public void onBindViewHolder(@NonNull TabListItemViewHolder holder, int position) {
 
-        holder.getTitleView().setText(position + 1);
+        holder.mTitle.setText(Integer.toString(position + 1));
 
         Animal item = mItemsList.get(position);
-        holder.getTextView().setText(item.getText());
-        Picasso.with(mContext)
+        holder.mText.setText(item.getText());
+        Picasso.get()
                .load(item.getUrl())
                .fit()
-               .into(holder.getIconView());
+               .into(holder.mIcon);
 
     }
 
@@ -68,9 +68,9 @@ public class TabListAdapter extends RecyclerView.Adapter<TabListAdapter.TabListI
 
     public class TabListItemViewHolder extends RecyclerView.ViewHolder{
 
-        private final ImageView mIcon;
-        private final TextView  mTitle;
-        private final TextView  mText;
+        public final ImageView mIcon;
+        public final TextView  mTitle;
+        public final TextView  mText;
 
         public TabListItemViewHolder(@NonNull final View itemView) {
             super(itemView);
@@ -85,18 +85,5 @@ public class TabListAdapter extends RecyclerView.Adapter<TabListAdapter.TabListI
                 }
             });
         }
-
-        public ImageView getIconView() {
-            return mIcon;
-        }
-
-        public TextView getTitleView() {
-            return mTitle;
-        }
-
-        public TextView getTextView() {
-            return mText;
-        }
-
     }
 }

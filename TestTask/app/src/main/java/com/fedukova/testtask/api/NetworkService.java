@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class NetworkService {
     private static       NetworkService mInstance;
-    private static final String         URL_MAIN = "http://kot3.com/xim/api.php";
+    private static final String         URL_MAIN = "http://kot3.com/xim/";
     private              Retrofit       mRetrofit;
 
     private NetworkService() {

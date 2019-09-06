@@ -22,12 +22,11 @@ public class DetailsActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.text_view);
 
         Animal animal = (Animal) getIntent().getSerializableExtra(Animal.ANIMAL);
-
-        Picasso.with(getApplicationContext())
+        Picasso.get()
                .load(animal.getUrl())
                .fit()
                .into(imageView);
-        indexTextView.setText(getIntent().getIntExtra("position", 0));
+        indexTextView.setText("" + getIntent().getIntExtra("position", 0));
         textView.setText(animal.getText());
     }
 }

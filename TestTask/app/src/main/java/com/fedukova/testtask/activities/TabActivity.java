@@ -5,14 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.fedukova.testtask.R;
-import com.fedukova.testtask.ui.CatsFragment;
-import com.fedukova.testtask.ui.DogsFragment;
+import com.fedukova.testtask.ui.AnimalFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class TabActivity extends AppCompatActivity {
 
+    public final static String CAT = "cat";
+    public final static String DOG = "dog";
 
     private TabLayout mTabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,15 +25,14 @@ public class TabActivity extends AppCompatActivity {
     }
 
     private void initTabs(){
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_1));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_2));
         mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()){
-                    case 1: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CatsFragment()).commit();
+                int position = tab.getPosition();
+                switch (position){
+                    case 0: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AnimalFragment(CAT)).commit();
                     break;
-                    case 2: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DogsFragment()).commit();
+                    case 1: getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AnimalFragment(DOG)).commit();
                     break;
                 }
             }
@@ -46,6 +47,7 @@ public class TabActivity extends AppCompatActivity {
 
             }
         });
-
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_1));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_2));
     }
 }

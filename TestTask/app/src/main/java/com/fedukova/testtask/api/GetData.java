@@ -1,16 +1,13 @@
 package com.fedukova.testtask.api;
 
-import java.util.List;
-
-import com.fedukova.testtask.entity.Animal;
+import com.fedukova.testtask.entity.AnimalList;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface GetData {
-    @GET("/cat")
-    Call<List<Animal>> getCats();
 
-    @GET("/dog")
-    Call<List<Animal>> getDogs();
+    @GET("api.php")
+    Call<AnimalList> getAnimals(@Query("query") String query);
 }

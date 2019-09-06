@@ -8,7 +8,7 @@ public class Animal implements Serializable {
 
     public static final String ANIMAL = "animal";
     public static final String URL = "url";
-    public static final String TEXT = "text";
+    public static final String TEXT = "title";
 
     @SerializedName(URL)
     private String url;
